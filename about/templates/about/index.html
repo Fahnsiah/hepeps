@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if about_us %}
+        <div class="jumbotron">
+            <h2>About Hepeps </h2>
+        </div>
+        <div class="blog">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-offset-2 col-md-8">
+                <div class="page-header">
+
+                  <img src="{{about_us.our_img.url}}" class="img-responsive" alt="" />
+
+
+                  </p>
+
+                  <p>{{about_us.about_Hepeps|linebreaks}}</p>
+
+                </div>
+              </div>
+            </div>
+            </div>
+      </div>
+    {% endif %}
+
+
+     {% if our_vision %}
+        <div class="jumbotron">
+            <h2>Our Vision</h2>
+          </div>
+
+
+          <div class="our-services">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-offset-2 col-md-8 col-xs-12">
+          <div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.8s">
+            <div class="services">
+              <div class="icons">
+                <i class="fa fa-desktop fa-3x">
+
+                  <img src="{{our_vision.img_vision.url}}" class="img-responsive" alt="" />
+
+                </i>
+              </div>
+              <h4>{{ our_vision.vision }}</h4>
+              <p>{{ our_vision.vision_details|linebreaks }}</p>
+            </div>
+          </div>
+          <hr>
+        </div>
+              </div>
+
+              </div>
+            </div>
+
+     {% endif %}
+
+
+    {% if our_mission %}
+        <div class="jumbotron">
+    <h2>Our Mission</h2>
+  </div>
+
+          <div class="our-services">
+
+            <div class="container">
+              <div class="row">
+
+
+                <div class="col-md-offset-2 col-md-8 col-xs-12">
+                  <div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.8s">
+                    <div class="services">
+                      <div class="icons">
+                        <i class="fa fa-desktop fa-3x">
+                            <img src="{{our_mission.img_mission.url}}" class="img-responsive" alt="" />
+
+                        </i>
+                      </div>
+                      <h4>{{our_mission.mission}}</h4>
+                    <p>{{our_mission.mission_details|linebreaks}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+
+              </div>
+          </div>
+    {% endif %}
+
+
+  {% if our_story %}
+    <div class="jumbotron">
+        <h2>Our Story</h2>
+      </div>
+
+      <div class="our-services">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-md-offset-2 col-md-8 col-xs-12">
+              <div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.4s">
+                <div class="services">
+                  <div class="icons">
+
+                    <i class="fa fa-heart-o fa-3x">
+                       <img src="{{our_story.img_our_story.url}}" class="img-responsive" alt="" />
+
+                    </i>
+                  </div>
+                  <h4>{{our_story.our_story|linebreaks }} </h4>
+
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  {% endif %}
+
+
+    {% if our_core_values %}
+         <div class="jumbotron">
+            <h2>Our Core Values</h2>
+          </div>
+         <div class="our-services">
+            <div class="container">
+              <div class="row">
+
+
+                <div class="col-md-offset-2 col-md-8 col-xs-12">
+                  <div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.8s">
+                    <div class="services">
+                      <div class="icons">
+                        <i class="fa fa-desktop fa-3x">
+
+                          <img src="{{our_core_values.img_core_value.url}}" class="img-responsive" alt="" />
+
+                        </i>
+                      </div>
+                      <h4>{{our_core_values.core_values}}</h4>
+                      <p>{{our_core_values.core_values_details|linebreaks}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+
+              </div>
+            </div>
+  </div>
+    {% endif %}
+
+{% endblock %}

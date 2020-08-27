@@ -1,0 +1,75 @@
+{% extends 'list.html' %}
+
+<div>
+    <div class="col-md-8">
+    {% block pagetitle %}
+
+    <nav class="breadcrumb-nav">
+       <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+           <li class="breadcrumb-item active">Contact Us</li>
+       </ol>
+   </nav>
+        {% load static %}
+        Contact us
+
+    {% endblock %}
+
+    {% block content%}
+
+        <div class="row">
+
+			<div class="container contact">
+				<div class="row">
+						<div class="col-md-12 text-right">
+							{% if perms.contact.can_view_contact %}
+								<a class="btn btn-success" href="{% url 'contact:list' %}">Awaiting Response</a>
+
+							{% endif %}
+							</div>
+					</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="contact-info">
+
+
+							<div class="">
+								<span><i class="fa fa-phone"></i> &nbsp;&nbsp;&nbsp;{{ contact.office_phone }}</span>
+							  </div>
+							<br>
+							  <div class="">
+								<span> <i class="fa fa-envelope"></i> &nbsp;&nbsp;&nbsp;{{ contact.email }}</span>
+							  </div>
+
+						</div>
+					</div>
+					<div class="col-md-9">
+						{% if error %}
+							<span class="text-danger">{{error}}</span>
+						{% endif %}
+						{% if success %}
+							<span class="text-success">{{success}}</span>
+						{% endif %}
+						<form action="{% url 'contact:message' %}" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+
+							<div class="row table-responsive">
+<!--								{% include 'contact/message.html' %}-->
+								<table class="table">
+									{{ form.as_table }}
+								</table>
+
+							</div>
+							<div class="offset-3 col-md-6 col-sm-12">
+								<button type="submit" class="btn btn-success btn-block">Send Email</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+    {% endblock %}
+</div>
+
+</div>

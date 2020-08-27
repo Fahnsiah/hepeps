@@ -1,0 +1,30 @@
+{% if teams.certificates %}
+    <div>
+        <h3>Professional Certificates</h3>
+        <table class="table">
+            {% for item in teams.certificates %}
+                <tr>
+                    <td>
+                        <span class="h4"><strong>{{ item.cert_name }}</strong></span>
+                        <br>
+                        <i>{{ item.description|linebreaks }}</i>
+                        <br>
+                        From {{ item.institution}}
+                        <br><br>
+                        {{ item.start_date }}
+                        {% if item.end_date %}
+                            - {{ item.end_date }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endif %}
+
+<!--
+cert_name = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField()
+    start_date = PartialDateField(null=True, blank=True)
+    end_date = PartialDateField(null=True, blank=True)
+-->

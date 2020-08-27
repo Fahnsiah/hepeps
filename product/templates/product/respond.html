@@ -1,0 +1,63 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Response to Order</h2>
+  </div>
+
+  <div class="our-services">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+            <table class="table table-bordered table-striped">
+
+                <tr>
+                    <th>Product</th>
+                    <td>{{ order.product.title }}</td>
+                </tr>
+                <tr>
+                    <th>Customer</th>
+                    <td>{{ order.name }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ order.email }}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{ order.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ order.order_status }}</td>
+                </tr>
+                <tr>
+                    <th>Responded</th>
+                    <td>{{ order.responded }}</td>
+
+                </tr>
+
+            </table>
+
+          </div>
+          <div class="col-md-9">
+              <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+              <div class="col-md-offset-1 col-md-10 col-sm-12">
+                  <table class="table">
+                      {{ form.as_table }}
+                  </table>
+
+                  <div class="col-md-offset-3 col-md-5 text-left">
+                      <input class="btn btn-primary btn-block" type="submit" value="Send Email">
+                  </div>
+              </div>
+          </form>
+          </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

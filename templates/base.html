@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+
+    <div class="my_container">
+        {% block content %}
+
+        {% endblock content %}
+
+         {% include 'tagsms.html' %}
+
+        {% include 'footer.html' %}
+
+        {% include 'scripts.html' %}
+    </div>
+</body>
+
+
+</html>

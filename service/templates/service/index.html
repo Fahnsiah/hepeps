@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="jumbotron jumbotron-bg">
+    <h2>Services</h2>
+  </div>
+
+  <div class="our-services">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-md-12">
+          {% for serv in service %}
+          <div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.4s">
+            <div class="services">
+              <a name="{{serv.id}}"></a>
+              <span class="h2">{{serv.service_name}}</span>
+              <br><br>
+              <div class="icons">
+                <img class="img-page-size" src="{{serv.service_img.url}}" alt="" />
+              </div>
+
+              <p>
+                {{serv.service_desc}}
+              </p>
+            </div>
+          </div>
+          <hr>
+           {% endfor %}
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="jumbotron">
+    <h1>We can <span>help build your</span> project!</h1>
+    <p>Voluptatem accusantium doloremque laudantium sprea totam rem aperiam</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Get it now</a></p>
+  </div> -->
+
+  {% endblock content %}

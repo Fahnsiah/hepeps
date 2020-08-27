@@ -1,0 +1,34 @@
+{% if teams.experiences %}
+    <div>
+        <h3>Work Experiences</h3>
+        <table class="table">
+            {% for item in teams.experiences %}
+                <tr>
+                    <td>
+                        <span class="h4"><strong>{{ item.position }}</strong></span>
+                        <br>
+                        <i>{{ item.description|linebreaks }}</i>
+                        <br><br>
+                        At {{ item.company_name}}, {{ item.county.country }}
+                        <br><br>
+                        {{ item.start_date }}
+                        {% if item.end_date %}
+                            - {{ item.end_date }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+{% endif %}
+
+<!--
+position = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField()
+    company_name = models.CharField(max_length=200, null=True, blank=True)
+    country = models.ForeignKey(Countries, on_delete=models.CASCADE)
+    city = models.CharField(max_length=200, null=True, blank=True)
+    start_date = PartialDateField()
+    end_date
+-->

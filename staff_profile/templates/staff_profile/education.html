@@ -1,0 +1,33 @@
+{% if teams.education %}
+    <div>
+        <h3>Educational Background</h3>
+        <table class="table">
+            {% for item in teams.education %}
+                <tr>
+                    <td>
+                        <span class="h4"><strong>{{ item.program }}</strong></span>
+                        <br>
+                        <i>{{ item.description|linebreaks }}</i>
+                        <br>
+                        From {{ item.school_name}}, {{ item.country }}
+                        <br><br>
+                        {{ item.start_date }}
+                        {% if item.end_date %}
+                            - {{ item.end_date }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endif %}
+
+<!--
+program = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField()
+    school_name = models.CharField(max_length=200, null=True, blank=True)
+    city = models.CharField(max_length=200, null=True, blank=True)
+    start_date = PartialDateField()
+    end_date = PartialDateField()
+    country
+-->

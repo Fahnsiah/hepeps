@@ -1,0 +1,19 @@
+{% if teams.publications %}
+    <div>
+        <h3>Scientific Publications</h3>
+        <ul>
+            {% for item in teams.publications %}
+                <li>
+                    <a target="_blank" href="{{ item.reference_link }}">{{ item.description }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<!--
+cert_name = models.CharField(max_length=200, null=True, blank=True)
+    description = models.TextField()
+    start_date = PartialDateField(null=True, blank=True)
+    end_date = PartialDateField(null=True, blank=True)
+-->

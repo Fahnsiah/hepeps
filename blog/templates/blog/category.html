@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Blog</h2>
+  </div>
+
+    <div class="blog">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-8 col-xs-12">
+                    <div class="row">
+                       <div class="col-md-offset-4 col-md-8 col-xs-12">
+                            <form action="" method="get">
+                                {% csrf_token %}
+                                <input style="width: 80%;" type="text" name="q" id="q_id" placeholder="search blog" value="{{ request.GET.q }}">
+                                <input type="submit" value="Search">
+                            </form>
+                       </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="page-header">
+
+                            {% if result_list %}
+
+                                {% for item in result_list %}
+                                    <h3>{{item.title}}</h3>
+                                    <h5>{{item.post_author}}</h5>
+                                    <img src="{{item.blog_img.url}}" class="img-responsive img-blog-page" alt="" />
+
+                                    <details>
+                                      <summary>{{item.description|safe|truncatewords:'100'|linebreaks}}</summary>
+
+                                      <p>{{item.post_desc}}</p>
+                                    </details>
+
+                                    <div class="ficon">
+                                      <a href="" alt=""></a>
+                                    </div>
+                                {% endfor %}
+
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <nav>
+                            <ul class="pager">
+
+                                <div class="pagination">
+                                <span class="step-links">
+                                {% if result_list.has_previous %}
+
+                                <li class="next"><a href="?page=1">&laquo; first <span aria-hidden="true">&rarr;</span></a></li>
+
+
+                                <li class="previous"><a href="?page={{ result_list.previous_page_number }}"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                                {% endif %}
+
+                                <span class="current">
+                                Page {{ result_list.number }} of {{ result_list.paginator.num_pages }}.
+                                </span>
+
+                                {% if result_list.has_next %}
+
+                                <li class="previous"><a href="?page={{ result_list.next_page_number }}"><span aria-hidden="true">&larr;</span> Next</a></li>
+
+                                <li class="next"><a href="?page={{ result_list.paginator.num_pages }}">Last &laquo;  <span aria-hidden="true">&rarr;</span></a></li>
+                                {% endif %}
+                                </span>
+                                </div>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    {% include 'blog/quick_links.html' %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  {% endblock content %}
+

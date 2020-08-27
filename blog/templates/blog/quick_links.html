@@ -1,0 +1,49 @@
+<div class="col-md-12">
+
+    {% if category_blog_list %}
+        <span class="text-capitalize h4">{{ category_blog_list.0.blog_category }} Blog</span>
+        <br>
+        <ul>
+            {% for item in category_blog_list %}
+                <li>
+                    <a href="{% url 'blog:index' item.id %}">{{ item }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <hr>
+    {% endif %}
+
+
+    {% if blog_category_links %}
+        <span class="text-capitalize h4">Blog Categories</span>
+        <br>
+        <ul>
+            {% for item in blog_category_links %}
+                <li>
+                    <a href="{% url 'blog:category' item.id %}">{{ item.name_and_count }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+
+    {% endif %}
+
+
+    <hr>
+
+    {% if blog_links %}
+        <span class="text-capitalize h4">Recent Blog</span>
+        <br>
+        <ul>
+            {% for item in blog_links %}
+                <li>
+                    <a href="{% url 'blog:index' item.id %}">{{ item }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+
+    {% endif %}
+
+</div>

@@ -1,0 +1,27 @@
+<div>
+    <hr>
+    <div class="home-title">
+        <h1 class="text-center">Our Services</h1>
+    </div>
+    {% for serv in service %}
+        <div class="col-md-4">
+            <div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.4s">
+            <div class="align-center">
+
+            <h4>{{serv.service_name}}</h4>
+            <div class="icon">
+              <img class="img-sm" src="{{serv.service_img.url}}" alt="" />
+            </div>
+            <p>
+                {{serv.service_desc|safe|truncatewords:'15'}}
+            </p>
+            <div class="ficon">
+
+              <a href="{% url 'service:index' %}#{{serv.id}} " class="btn btn-primary" role="button">Service Detail</a>
+            </div>
+            </div>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Our Products</h2>
+  </div>
+
+  <div class="our-services">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12 text-right">
+              {% if perms.cause.can_add_product %}
+                 <a class="btn btn-default fa-border" href="{% url 'product:order_list' %}">Order List</a>
+                 <a class="btn btn-default fa-border" href="{% url 'product:add' %}">Add Product</a>
+
+              {% endif %}
+          </div>
+      </div>
+      <div class="row">
+        {% for item in result_list %}
+            <div class="col-md-4">
+                <div class="card card-product">
+
+                  <img src="{{ item.img_url.url }}" class="card-img-top card-product-img img-responsive" alt="...">
+
+                  <div class="card-body text-center">
+                    <br>
+                    <div>
+                      <span class="card-title h4">{{ item.title }}</span>
+                    </div>
+
+                    <br>
+                    <div>
+                        <p class="card-text">
+                          <i>{{ item.detail|truncatewords:'20' }}</i>
+                        </p>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-6 text-center">
+                        <a href="{% url 'product:detail' item.id %}" class="card-link btn btn-primary">Detail</a>
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <a href="{% url 'product:order' item.id %}" class="card-link btn btn-default">Order</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+
+  {% endblock content %}

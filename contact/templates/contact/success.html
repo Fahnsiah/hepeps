@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+<div>
+    <div class="col-md-8">
+    {% block pagetitle %}
+
+    <nav class="breadcrumb-nav">
+       <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+           <li class="breadcrumb-item"><a href="{% url 'contact:index' %}">Contact Us</a></li>
+           <li class="breadcrumb-item active">Success</li>
+       </ol>
+   </nav>
+        {% load static %}
+        Thank You
+
+    {% endblock %}
+
+    {% block content%}
+
+        <div class="row">
+
+			<div class="offset-3 col-md-8 col-sm-12">
+                <span class="text-warning h3">
+                    {{ message }}
+                </span>
+            </div>
+		</div>
+    {% endblock %}
+</div>
+
+</div>

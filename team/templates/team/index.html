@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Our Team</h2>
+  </div>
+
+  <div class="our-services">
+    <div class="container">
+     <div class="col-md-12">
+          <div class="row">
+
+            {% for item in result_list %}
+            <div class="col-md-offset-1 col-md-5 col-sm-12">
+                <a name="{{item.id}}"></a>
+              <div class="thumbnail">
+                <div class="img-thumbnail">
+                  <img src="{{item.img_url.url}}" alt="">
+                  <div class="caption">
+                    <h4>{{item.first_name}} {% if item.other_names %} {{ item.other_names}} {% endif %} {{ item.last_name}} </h4>
+                    <h3><b>{{item.role}}</b> </h3>
+                    <p>{{item.Bio}} </p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+              {% endfor %}
+              </div>
+         </div>
+    </div>
+  </div>
+
+
+  {% endblock content %}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/css">
+        .navbar-default {
+        background-color: transparent;
+        border-color: transparent;
+        margin-bottom: 0px;
+        position: fixed;
+        width: 100%;
+        border-radius: 0px;
+        z-index: 10007;
+    }
+    .content-block-one {
+      padding: 30px;
+      margin-bottom: 0px;
+      color: inherit;
+      background-color: #eee;
+    }
+    .content-block-one h1,
+    .content-block-one .h1 {
+      color: inherit;
+    }
+    .content-block-one p {
+      margin-bottom: 15px;
+      font-size: 21px;
+      font-weight: 200;
+    }
+    .content-block-one > hr {
+      border-top-color: #d5d5d5;
+    }
+    .container .content-block-one {
+      border-radius: 6px;
+    }
+    .content-block-one .container {
+      max-width: 100%;
+    }
+    @media screen and (min-width: 768px) {
+      .content-block-one {
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+      .container .content-block-one {
+        padding-right: 60px;
+        padding-left: 60px;
+      }
+      .content-block-one h1,
+      .content-block-one .h1 {
+        font-size: 63px;
+      }
+    }
+    .content-space-one {
+      padding: 0px;
+      margin-bottom: 0px;
+      color: inherit;
+      background: url(http://placehold.it/1200x650/0033cc/ffffff) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    .content-space-two {
+      padding: 0px;
+      margin-bottom: 0px;
+      color: inherit;
+      background: url(http://placehold.it/1200x650/cc0000/ffffff) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    .page-break {
+        width: 50%;
+        height: 3px;
+        background-color: #fff;
+        margin: 0 auto;
+    }
+    </script>
+</head>
+<body>
+
+
+  <div id="startchange"></div>
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    {% for item in bgimages %}
+
+      {% if forloop.counter == 1 %}
+        <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter}}" class="active"></li>
+      {% else %}
+        <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter }}"></li>
+      {% endif%}
+
+    {% endfor %}
+
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    {% for item in background_images %}
+
+      {% if forloop.counter == 1 %}
+        <div class="item active">
+              <img src="{{ item.img_url.url }}" alt="..." width="100%">
+              <div class="carousel-caption">
+                ...
+            </div>
+        </div>
+      {% else %}
+        <div class="item">
+          <img src="{{ item.img_url.url }}" alt="..." width="100%">
+          <div class="carousel-caption">
+            ...
+          </div>
+        </div>
+      {% endif%}
+
+    {% endfor %}
+
+
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      var scroll_start = 0;
+      var startchange = $('#startchange');
+      var offset = startchange.offset();
+          if (startchange.length){
+      $(document).scroll(function() {
+          scroll_start = $(this).scrollTop();
+          if(scroll_start > offset.top) {
+                $(".navbar-default").css('background-color', '#ffffff');
+             } else {
+                $('.navbar-default').css('background-color', 'transparent');
+             }
+         });
+          }
+      });
+</script>
+</body>
+</html>

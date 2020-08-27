@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block content%}
+
+    <div class="container">
+        <div class="col-md-offset-3 col-md-6 col-sm-12">
+            {% if error %}
+                <span class="text-danger">{{error}}</span>
+            {% endif %}
+            {% if contact_message %}
+                <span class="text-warning h4">Responding To:
+                <strong>{{ contact_message }}</strong>
+                </span>
+                <br>
+                <span>
+                    <span class="text-warning h5">Message:</span>
+                    <br>
+                    <span>
+                        {{ contact_message.message }}
+                    </span>
+                </span>
+            {% endif %}
+            <form action="{% url 'contact:respond' mid %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="row table-responsive">
+                    <input type="hidden" id="pk" value="{{ mid }}">
+                    <table class="table">
+                        {{ form.as_table }}
+                    </table>
+
+                    <div class="col-md-offset-4 col-md-6">
+                        <button type="submit" class="btn btn-primary">Response</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

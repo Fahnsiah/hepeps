@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Blog</h2>
+  </div>
+
+{% for myblog in posts %}
+  {% if forloop.first %}
+
+  <div class="blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-8">
+          <div class="page-header">
+            <h3>{{myblog.post_title}}</h3>
+            <h5>{{myblog.post_date}} - Posted by: {{myblog.post_by.first_name}}</h5>
+            <img src="{{myblog.post_img.url}}" class="img-responsive" alt="" />
+            <p>{{ myblog.img_title }}</p>
+
+            <h3>{{myblog.post_title}}</h3>
+
+            <p>{{myblog.post_desc}}
+            </p>
+
+
+            <div class="ficon">
+              <a href="" alt="">Read more</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+
+          <nav>
+            <ul class="pager">
+
+
+
+        <div class="pagination">
+    <span class="step-links">
+        {% if prevpost %}
+
+
+      <li class="previous"><a href="{{ STATIC_URL }}/{{prevpost.id}}/">
+        {{prevpost}}<span aria-hidden="true">&larr;</span> Previous</a></li>
+
+      {{else}}
+      <li class="next"><a href="{% url 'index' %}">&laquo; Blog <span aria-hidden="true">&rarr;</span></a></li>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+
+        {% if nextpost %}
+
+      <li class="next"><a href="{{ STATIC_URL }}/{{nextpost.id}}/">
+        {{nextpost}}<span aria-hidden="true">&larr;</span> Next</a></li>
+
+      {{else}}
+      <li class="next"><a href="{% url 'index' %}">&laquo; Blog <span aria-hidden="true">&rarr;</span></a></li>
+        {% endif %}
+    </span>
+</div>
+
+
+
+
+            </ul>
+          </nav>
+
+        </div>
+
+
+
+        <div class="recents">
+          <div class="col-xs-6 col-md-4">
+            <h5>Search for.</h5>
+            <form class="form-search">
+              <input class="form-control" type="search" name="post_title" placeholder="Search..">
+
+            </form>
+
+
+
+            <div class="page-header">
+              <h4>Search Results Or Recent Post</h4>
+            </div>
+
+            <div class="recent-post">
+              <ul class="recent">
+                {% for myblog in posts|slice:'3' %}
+                <li><a href="#">{{myblog.post_title}}</a></li>
+                                {% endfor %}
+              </ul>
+            </div>
+
+            <ul class="list-group">
+              <div class="page-header">
+                <h4>Categories</h4>
+              </div>
+               {% for myblog in posts|slice:'3' %}
+              <li class="list-group-item">
+                <span class="badge">{{myblog.post_category_set.count}}</span>
+                <a href="#" alt="">{{myblog.post_category}}</a>
+              </li>
+
+
+
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+

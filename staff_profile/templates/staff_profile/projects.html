@@ -1,0 +1,49 @@
+{% if teams.projects %}
+    <div>
+        <h3>Projects Managed</h3>
+        <table class="table">
+            {% for item in teams.projects %}
+                <tr>
+                    <td>
+                        <span class="h4"><strong>{{ item.project_name }}</strong></span>
+                        <br>
+                        <i>{{ item.description|linebreaks }}</i>
+                        <br>
+                        At {{ item.company_name}}, {{ item.country }}
+                        <br>
+                        For {{ item.client_name }}
+                        <br><br>
+                        <strong>Method Used:</strong>
+                        <br>
+                        {{ item.method_used }}
+                        <br>
+                        {% if item.tools_used %}
+                            <strong>Tools Used:</strong>
+                            <br>
+                            {{ item.tools_used }}
+                        {% endif %}
+                        <br><br>
+                        {{ item.start_date }}
+                        {% if item.end_date %}
+                            - {{ item.end_date }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endif %}
+
+<!--
+project_name = models.CharField(max_length=200)
+    description = models.TextField(max_length=2500)
+    company_name = models.CharField(max_length=200)
+    client_name = models.CharField(max_length=200)
+    method_use = models.CharField(max_length=200)
+    role_on_project = models.CharField(max_length=150)
+    city = models.CharField(max_length=200, null=True, blank=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    tools_use = models.TextField(max_length=2500, blank=True, null=True)
+    start_date = models.DateTimeField()
+    end_date
+-->

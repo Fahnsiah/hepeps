@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Order Requests</h2>
+  </div>
+
+  <div class="our-services">
+    <div class="container">
+
+      <div class="row">
+          {% if result_list %}
+          <div class="col-md-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Order Date</th>
+                            <th>Response</th>
+                            <th>Responded</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {% for item in result_list %}
+                            <tr>
+                                <td>{{ item.product.title }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>{{ item.phone }}</td>
+                                <td>{{ item.created_on }}</td>
+                                <td>{{ item.response }}</td>
+                                <td>{{ item.responded }}</td>
+                                <td>
+                                    <a href="{% url 'product:respond' item.id %}">Reply</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+          {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+
+
+  {% endblock content %}

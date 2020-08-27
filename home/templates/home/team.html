@@ -1,0 +1,24 @@
+
+<div class="home-title">
+    <h1 class="text-center">Meet Our Team</h1>
+</div>
+<div class="row">
+
+  {% for teams in all_team %}
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <div class="img-thumbnail">
+          <img src="{{teams.img_url.url}}" alt="">
+          <div class="caption">
+            <span class="h4">{{teams.first_name}} {% if teams.other_names %} {{ teams.other_names}} {% endif %} {{ teams.last_name}} </span>
+              <br>
+              <span class="text-warning h5"><i>{{teams.role}}</i> </span>
+            <p class="text-left">{{teams.bio|truncatewords:15}} </p>
+              <br>
+            <a href="{% url 'staff_profile:index' %}#{{teams.id}}" class="btn btn-primary" role="button">Read Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

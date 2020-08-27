@@ -1,0 +1,34 @@
+{% if teams.trainings %}
+    <div>
+        <h3>Professional Trainings</h3>
+        <table class="table">
+            {% for item in teams.trainings %}
+                <tr>
+                    <td>
+                        <span class="h4"><strong>{{ item.training_cert }}</strong></span>
+                        <br>
+                        <i>{{ item.description|linebreaks }}</i>
+                        <br>
+                        From {{ item.training_company}}, {{ item.country }}
+                        <br><br>
+                        {{ item.start_date }}
+                        {% if item.end_date %}
+                            - {{ item.end_date }}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endif %}
+
+<!--
+program = models.CharField(max_length=200, null=True, blank=True)
+    training_cert = models.CharField(max_length=200, null=True, blank=True)
+    training_description = models.CharField(max_length=200, null=True, blank=True)
+    training_company = models.CharField(max_length=200, null=True, blank=True)
+    start_date = PartialDateField(null=True, blank=True)
+    end_date = PartialDateField(null=True, blank=True)
+    city = models.CharField(max_length=200, null=True, blank=True)
+    country
+-->

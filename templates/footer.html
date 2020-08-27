@@ -1,0 +1,74 @@
+<footer>
+    <div class="inner-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 f-about">
+            <a href="{% url 'home:index' %}">
+              <h3 class="widgetheading">HEPEPS Solutions</h3>
+            </a>
+            <p>Our deepest fear is not that we are inadequate.
+              Our deepest fear is that we are powerful beyond measure.
+              It is our light, not our darkness that most frightens us.
+              Our playing small does not serve the world. The Hepeps
+              Team was born to manifest and show forth glory.
+              And as we let our own light shine, we unconsciously
+              give other people permission to do the same.
+            </p>
+
+          </div>
+          <div class="col-md-6 l-posts">
+              {% if footer_blog %}
+                <h3 class="widgetheading">Latest Posts</h3>
+                <ul>
+                    {% for item in footer_blog %}
+
+                          <li>
+                              <a href="{% url 'blog:index' item.id %}">{{ item }}
+                                  <i class="text-info">(Posted on: {{ item.post_date }})</i>
+                              </a>
+                          </li>
+
+                    {% endfor %}
+                </ul>
+              {% endif %}
+
+          </div>
+          <div class="col-md-3 f-contact">
+            <h3 class="widgetheading">Stay in touch</h3>
+            <a href="{% url 'contact:index' %}">
+             <i class="fa fa-envelope"></i> {{ contact_info.email }}<br><br>
+            </a>
+            <p><i class="fa fa-phone"></i> {{ contact_info.office_phone }}</p>
+            <p><i class="fa fa-home"></i> {{ contact_info.postal|linebreaks }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="last-div">
+      <div class="container">
+        <div class="row">
+          <div class="copyright">
+            &copy; {{ copy_right_year }} HEPEPS Solutions. All Rights Reserved
+            <div class="credits">
+
+            </div>
+          </div>
+          <nav class="foot-nav">
+            <ul>
+              <li><a href="{% url 'home:index' %}">Home</a></li>
+              <li><a href="{% url 'service:index' %}">Services</a></li>
+              <li><a href="{% url 'product:index' %}">Products</a></li>
+              <li><a href="{% url 'blog:index' 0 %}">Blog</a></li>
+              <li><a href="{% url 'staff_profile:index' %}">Team Profile</a></li>
+              <li><a href="{% url 'about:index' %}">About Us</a></li>
+              <li><a href="{% url 'contact:index' %}">Contact Us</a></li>
+
+            </ul>
+          </nav>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <a href="" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+    </div>
+  </footer>
