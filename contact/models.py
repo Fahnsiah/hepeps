@@ -4,7 +4,7 @@ from util.models import phone_regex
 
 class Contact(models.Model):
     office_phone = models.CharField(max_length=15)
-    mobile_phone = models.CharField(max_length=15)
+    mobile_phone = models.CharField(validators=[phone_regex], max_length=15)
     email = models.EmailField(max_length=100)
     website = models.CharField(max_length=100)
     postal = models.TextField()

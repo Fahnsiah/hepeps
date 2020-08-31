@@ -1,4 +1,4 @@
-gi"""hepeps URL Configuration
+"""hepeps URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -19,14 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('contact', include(('contact.urls', 'contact'), namespace='contact')),
-    path('staff_profile', include(('staff_profile.urls', 'staff_profile'), namespace='staff_profile')),
-    path('about', include(('about.urls', 'about'), namespace='about')),
-    path('blog', include(('blog.urls', 'blog'), namespace='blog')),
-    path('product', include(('product.urls', 'product'), namespace='product')),
-    path('team', include(('team.urls', 'team'), namespace='team')),
+    path('contact/', include(('contact.urls', 'contact'), namespace='contact')),
+    path('staff_profile/', include(('staff_profile.urls', 'staff_profile'), namespace='staff_profile')),
+    path('about/', include(('about.urls', 'about'), namespace='about')),
+    path('blog/', include(('blog.urls', 'blog'), namespace='blog')),
+    path('product/', include(('product.urls', 'product'), namespace='product')),
+    path('team/', include(('team.urls', 'team'), namespace='team')),
     path('admin/', admin.site.urls),
-    path('service', include(('service.urls', 'service'), namespace='service')),
+    path('service/', include(('service.urls', 'service'), namespace='service')),
     path('', include(('home.urls', 'home'), namespace='home')),
     ]
 

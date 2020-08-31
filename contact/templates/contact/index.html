@@ -53,31 +53,32 @@
                     {% csrf_token %}
 
                      <div class="form-group">
-                      <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Your first name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                      <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Your first name" data-rule="minlen:1" data-msg="Please enter at least 1 char" required />
                       <div class="validation"></div>
                     </div>
 
 
                      <div class="form-group">
-                      <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Your last name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                      <input type="text"  name="last_name" class="form-control" id="last_name" placeholder="Your last name" data-rule="minlen:1" data-msg="Please enter at least 1 char" required/>
                       <div class="validation"></div>
                     </div>
 
 
                     <div class="form-group">
-                      <input type="text" name="phone" class="form-control" id="phone" placeholder="Your phone number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                      <input type="tel" name="phone" pattern="^\+?\d{0,13}" class="form-control" id="phone" placeholder="Your phone number" data-rule="minlen:4" data-msg="Please enter at least 4 chars"  required/>
+                        <label for="phone">format: +23100000000 up to 15</label>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required />
                       <div class="validation"></div>
                     </div>
                     <div class="form-group">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 4 chars of subject" required />
                       <div class="validation"></div>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                      <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                      <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                      <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message" required></textarea>
                       <div class="validation"></div>
                     </div>
 
