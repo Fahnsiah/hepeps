@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Blog</h2>
+  </div>
+
+    <div class="blog">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-7 col-xs-12">
+                    <div class="row">
+                       <div class="col-md-offset-4 col-md-8 col-xs-12">
+                            <form action="" method="get">
+                                {% csrf_token %}
+                                <input style="width: 80%;" type="text" name="q" id="q_id" placeholder="search blog" value="{{ request.GET.q }}">
+                                <input type="submit" value="Search">
+                            </form>
+                       </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="page-header">
+
+                            {% if result_list %}
+
+                                <h3>{{result_list.title}}</h3>
+                                    <h5>{{result_list.post_author}}</h5>
+                                    <img src="{{result_list.blog_img.url}}" class="img-responsive img-blog-page" alt="" />
+
+                                     <summary>{{result_list.description|safe|linebreaks}}</summary>
+
+                                      <div class="text-right">
+                                          <a class="btn-link" href="{% url 'blog:index' 0 %}">Back</a>
+                                      </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    {% include 'blog/quick_links.html' %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  {% endblock content %}
+

@@ -33,11 +33,14 @@
                                     <h5>{{item.post_author}}</h5>
                                     <img src="{{item.blog_img.url}}" class="img-responsive img-blog-page" alt="" />
 
-                                    <details>
-                                      <summary>{{item.description|safe|truncatewords:'100'|linebreaks}}</summary>
 
-                                      <p>{{item.post_desc}}</p>
-                                    </details>
+                                      <summary>
+                                          {{item.description|safe|truncatewords:'100'|linebreaksbr}}
+                                          <div class="text-right">
+                                              <a class="btn-link" href="{% url 'blog:detail' item.id %}">Read More</a>
+                                          </div>
+                                      </summary>
+
 
                                     <div class="ficon">
                                       <a href="" alt=""></a>
